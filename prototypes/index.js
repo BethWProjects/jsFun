@@ -18,26 +18,42 @@ const { dinosaurs, humans, movies } = require('./datasets/dinosaurs');
 
 // DATASET: kitties from ./datasets/kitties
 const kittyPrompts = {
-  orangePetNames() {
+  orangePetNames(animal) {
     // Return an array of just the names of kitties who are orange e.g.
         // ['Tiger', 'Snickers']
 
         /* CODE GOES HERE */
+        const orangeKitty = animal
+        .filter(kitty => kitty.color === 'orange')
+        .map(kitty => kitty.name)
+    return orangeKitty
 
     // Annotation:
-    // Write your annotation here as a comment
+    // iterate over the kitties array to filter out orange kitties
+    // once orange kitties are found, iterate over the orange kitties
+    // map the name of the kitties
+    // remember to return the variable iterating over kitties
   },
 
-  sortByAge() {
+  sortByAge(animal) {
     // Sort the kitties by their age
 
     /* CODE GOES HERE */
+    const kittyAge = animal.sort((a, b) => {
+     return b.age - a.age
+    }) 
+    return kittyAge
+    
 
     // Annotation:
-    // Write your annotation here as a comment
+    // iterate over the kitties array using sort()
+    // include two parameters representing the starting index and ending
+    // index within the array
+    // return the code to sort the indexes
+    // return the variable within your function sortByAge()
   },
 
-  growUp() {
+  growUp(animal) {
     // Return an array of kitties who have all grown up by 2 years e.g.
     // [{
     //   name: 'Felicia',
@@ -52,7 +68,20 @@ const kittyPrompts = {
     // ...etc]
 
     /* CODE GOES HERE */
+    const kittyGrown = animal.map(kitty => {
+      return {
+        name: kitty.name,
+        age: kitty.age + 2,
+        color: kitty.color
+      }
+     }) 
+     return kittyGrown
+
   }
+  //iterate over the kitties array (dynamically changed to animal)
+  //using map iterator.  return the object framework and change
+  //the values to the kitty values.  Add 2 to the kitty age value.
+  //return the kittyGrown value in the function. 
 };
 
 // PLEASE READ-----------------------
@@ -60,6 +89,9 @@ const kittyPrompts = {
 // refactor the above functions using arguments and parameters so that
 // they can perform the same utility
 // for the kitties or puppers datasets, depending on what arguments you send through.
+
+//anotate here:  add a parameter (animal) into the function parenthesis and change the 
+//mentions of 'kitties' within the functions to 'animal' to make it dynamic
 
 
 // ---------------------------------------------------------------------------
@@ -458,9 +490,12 @@ const breweryPrompts = {
     // 40
 
     /* CODE GOES HERE */
-
+    const beerCount = breweries.reduce((acc, brewery) => {
+      return acc += brewery.beers.length
+    }, 0)
+    return beerCount
     // Annotation:
-    // Write your annotation here as a comment
+    // 
   },
 
   getBreweryBeerCount() {
