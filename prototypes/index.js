@@ -495,7 +495,8 @@ const breweryPrompts = {
     }, 0)
     return beerCount
     // Annotation:
-    // 
+    // beer count is not separate variable so iterate over the beer objects length 
+    // to return the count of beers (NOT ADDING JUST RETURNING THE LENGTH)
   },
 
   getBreweryBeerCount() {
@@ -508,9 +509,20 @@ const breweryPrompts = {
     // ]
 
     /* CODE GOES HERE */
+    const beerNameandCount = breweries.map(brewery => {
+      return {
+        name: brewery.name,
+        beerCount: brewery.beers.length
+      }
+    })
+    return beerNameandCount
+
+
 
     // Annotation:
-    // Write your annotation here as a comment
+    // iterate over the breweries array using map and targe the beers property
+    // target the beers.name property
+    // return the length of each beers property
   },
 
   findHighestAbvBeer() {
@@ -519,9 +531,22 @@ const breweryPrompts = {
     // { name: 'Barrel Aged Nature\'s Sweater', type: 'Barley Wine', abv: 10.9, ibu: 40 }
 
     /* CODE GOES HERE */
+    const abvAmount = breweries.map(brewery => {
+      return brewery.beers
+    }).flat()
+    const sortedBeers = abvAmount.sort((beerA, beerB) => {
+      return beerA.abv - beerB.abv
+    }).pop()
+    console.log(sortedBeers)
+    return sortedBeers
 
     // Annotation:
-    // Write your annotation here as a comment
+    //  map over the beers to grab all beer objects
+    //  use .flat() on the end of the abvAmount variable to put all data into one array
+    //  create a new variable to sort the beers from the new abvAmount array, iterate
+    //over the new array using sort() to list the .abv to sort from lowest to highest (or vise versa)
+    //  use .pop on the end of the sortedBeers variable to grab the last object (the 
+    //beer object with the highest ABV count)
   }
 };
 
