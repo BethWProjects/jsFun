@@ -153,9 +153,19 @@ const modPrompts = {
     // ]
 
     /* CODE GOES HERE */
-
+    const modStudentNum = mods.map(mod => {
+      newArray = {
+        mod: mod.mod,
+        studentsPerInstructor: mod.students / mod.instructors
+      }
+      return newArray
+    })
+    return modStudentNum
     // Annotation:
-    // Write your annotation here as a comment
+    // iterate over all objects using .map()
+    // create a new variable and calculate the number for the new studentsPerInstructor dividing the
+    //amount of students by the amount of instructors 
+    // 
   }
 };
 
@@ -537,7 +547,7 @@ const breweryPrompts = {
     const sortedBeers = abvAmount.sort((beerA, beerB) => {
       return beerA.abv - beerB.abv
     }).pop()
-    console.log(sortedBeers)
+    //console.log(sortedBeers)
     return sortedBeers
 
     // Annotation:
